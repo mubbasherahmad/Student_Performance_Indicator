@@ -33,7 +33,10 @@ def predict_datapoint():
         pred_df=data.get_data_as_data_frame()
         print(pred_df)
         print("Before Prediction")
+        pred_df.rename(columns = {'race_ethnicity':'race/ethnicity', 'parental_level_of_education':'parental level of education','test_preparation_course':'test preparation course',
+                              'reading_score':'reading score','writing_score':'writing score'}, inplace = True)
 
+        print(pred_df)
         predict_pipeline=PredictPipeline()
         print("Mid Prediction")
         results=predict_pipeline.predict(pred_df)
@@ -42,4 +45,4 @@ def predict_datapoint():
     
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0")
+    app.run(debug=True)
